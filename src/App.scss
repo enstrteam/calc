@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap");
+
+$block-width: 240px;
+
+$font-size-small: 12px;
+$font-size-medium: 14px;
+$font-size-large: 36px;
+
+$color-font: #4d5562;
+$color-digits: #111827;
+$color-selector: #f3f4f6;
+$color-display: #f3f4f6;
+$color-border: #e2e3e5;
+$color-iris: #5d5fef;
+$color-dragndrop-text: #6b7280;
+$color-dragndrop-background: #f0f9ff;
+
+@mixin border-radius {
+  border-radius: 6px;
+}
+
+@mixin button-border-style {
+  border-radius: 6px;
+  border: 1px solid $color-border;
+}
+
+@mixin active-selector-style {
+  border-radius: 5px;
+  outline: 1px solid $color-border;
+  background-color: white;
+}
+
+@mixin block-style {
+  width: $block-width;
+  @include shadow;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 12px;
+}
+
+@mixin shadow {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+@mixin button-active {
+  border: 2px solid $color-iris;
+  cursor: pointer;
+}
+
+@mixin events-none {
+  pointer-events: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: $font-size-medium;
+  color: $color-font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.calc {
+  width: 695px;
+  height: 650px;
+}
+
+.selector {
+  padding-top: 38px;
+  .wrapper {
+    background-color: $color-selector;
+    @include border-radius;
+    margin-bottom: 30px;
+    padding: 1px;
+    .runtime,
+    .constructor {
+      margin: 1px;
+      padding: 7px 12px;
+      line-height: 15px;
+      &.active {
+        @include active-selector-style;
+        path {
+          stroke: $color-iris;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      svg {
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.dragndrop-container {
+  width: 243px;
+  height: 448px;
+  border: 2px dashed #c4c4c4;
+  border-radius: 6px;
+}
+
+.left-side {
+  padding: 106px 0 0 76px;
+}
+
+.block-container {
+  color: $color-digits;
+  width: 243px;
+  height: 448px;
+  .calc-display {
+    height: 60px;
+    @include block-style;
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      background-color: $color-display;
+      @include border-radius;
+      padding: 4px 8px;
+      .long {
+        font-size: 19px;
+      }
+      .short {
+        font-size: $font-size-large;
+        letter-spacing:-1px;
+      }
+      .digits {
+        font-weight: 800;
+      }
+    }
+  }
+
+  .calc-operators {
+    height: 56px;
+    @include block-style;
+    .wrapper {
+      width: 100%;
+      .button {
+        width: 52px;
+        height: 48px;
+        background-color: #fff;
+        @include button-border-style;
+      }
+    }
+  }
+}
+
+.calc-digits {
+  height: 224px;
+  @include block-style;
+  .wrapper {
+    gap: 8px;
+    .button {
+      width: 72px;
+      height: 48px;
+      background-color: #fff;
+      @include button-border-style;
+      &.zero {
+        width: 152px;
+      }
+    }
+  }
+}
+
+.calc-equal {
+  height: 72px;
+  @include block-style;
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: $color-iris;
+    @include button-border-style;
+    color: white;
+  }
+}
+
+.dragndrop-container {
+  .wrapper {
+    color: $color-dragndrop-text;
+    line-height: 14.52px;
+    text-align: center;
+    svg {
+      margin-bottom: 12px;
+    }
+    .drop-here {
+      color: $color-iris;
+      line-height: 16.94px;
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.constructor {
+  .block {
+    box-shadow: none;
+  }
+  .button {
+    cursor: grab;
+  }
+  [draggable="false"] {
+    cursor: not-allowed;
+  }
+}
+
+.runtime {
+  .block {
+    box-shadow: none;
+    cursor: auto;
+    .button {
+      cursor: pointer;
+    }
+  }
+}
+
+.block {
+  cursor: grab;
+  user-select: none;
+  .bottom-line {
+    pointer-events: none;
+    bottom: -17px;
+  }
+}
+
+.blocks {
+  .block {
+  }
+  [draggable="false"] {
+    opacity: 0.5;
+    cursor: auto;
+    .button {
+      cursor: auto;
+    }
+  }
+}
