@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/calc-deploy/static/css/main.b8f84eb6.css",
+    "main.js": "/calc-deploy/static/js/main.798d8a40.js",
+    "index.html": "/calc-deploy/index.html",
+    "main.b8f84eb6.css.map": "/calc-deploy/static/css/main.b8f84eb6.css.map",
+    "main.798d8a40.js.map": "/calc-deploy/static/js/main.798d8a40.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8f84eb6.css",
+    "static/js/main.798d8a40.js"
+  ]
+}
